@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Save the Planet</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+
+<div class="jumbotron" style="background-color:#009688">
+  <h1 class="display-3" style="text-align:center; color:white"><b>You have prevented:</b></h1>
+
+</div>
+<div class="container row col-md-12">
+  <div class="card text-white bg-primary mb-3 d-inline-block marg containerAni" style="max-width: 20rem;">
+    <div class="card-header main-header">Wastage of</div>
+    <div class="card-body">
+      <h1 id = "water" class="card-title main-number"><%= data.stats.water %></h1>
+      <div class="main-unit">gallons of</div>
+    </div>
+    <div class="card-header main-header">Water<i class="em em-droplet"></i></div>
+    <div class="overlay">
+      <div class="card-title overlayFont">The average person directly uses about 100 gallons per day
+      </div>
+    </div>
+  </div>
+
+  <div class="card text-white bg-success mb-3 d-inline-block marg containerAni" style="max-width: 20rem;">
+    <div class="card-header main-header">Cutting of</div>
+    <div class="card-body">
+      <h1 id="trees" class="card-title main-number" style = "font-size: 110px" ><%= data.stats.trees %></h1>
+    </div>
+    <div class="card-header main-header">Trees<i class="em em-evergreen_tree"></i></div>
+    <div class="overlay" style="background-color:Green">
+      <div class="card-title overlayFont">Anywhere between 3.5 billion - 7 billion trees are cut down per year
+      </div>
+    </div>
+  </div>
+
+  <div class="card text-white bg-dark mb-3 d-inline-block marg containerAni" style="max-width: 20rem;">
+    <div class="card-header main-header">Emissions of</div>
+    <div class="card-body">
+      <h1 id="carbon" class="card-title main-number"><%= data.stats.carbon %></h1>
+
+      <div class="main-unit">lb of</div>
+    </div>
+    <div class="card-header main-header">CO<sub>2</sub><i class="em em-cloud"></i></div>
+    <div class="overlay" style="background-color:Black">
+      <div class="card-title overlayFont">The average per capita carbon footprint of a USA is ~ 94 lb per day
+      </div>
+    </div>
+  </div>
+</div>
+<h2 style="text-align:center">Average water savings per person: <span class="badge badge-primary"><%= data.avgStats.water %></span></h2>
+<h2 style="text-align:center">Average number of trees saved per person: <span class="badge badge-success"><%= data.avgStats.trees %></span></h2>
+<h2 style="text-align:center">Average carbon emissions prevented per person: <span class="badge badge-dark"><%= data.avgStats.carbon %></span></h2>
+<h5 style="text-align:center">Averages were last reset at <%= data.timestamp %></h5>
+
+<form method="get" action="/index" style="text-align:center; margin-top: 20px; margin-bottom: 20px;">
+  <button type="submit" class ="btn-lg btn-primary" >Start over</button>
+</form>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<script  src="js/result.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<script  src="js/result.js"></script>
+<script src="js/countUp.js"></script>
+<script>
+var options = {
+  useEasing: true,
+  useGrouping: true,
+  separator: ',',
+  decimal: '.',
+};
+var demo = new CountUp('carbon', 0, <%= data.stats.carbon %>, 3, 2.5, options);
+if (!demo.error) {
+  demo.start();
+} else {
+  console.error(demo.error);
+}
+
+var demo2 = new CountUp('trees', 0, <%= data.stats.trees %>, 3, 2.5, options);
+if (!demo2.error) {
+  demo2.start();
+} else {
+  console.error(demo2.error);
+}
+
+var demo3 = new CountUp('water', 0, <%= data.stats.water %>, 3, 2.5, options);
+if (!demo3.error) {
+  demo3.start();
+} else {
+  console.error(demo3.error);
+}
+
+</script>
+</body>
+
+</html>

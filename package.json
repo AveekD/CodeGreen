@@ -1,0 +1,26 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "Web app using positive reinforcement to encourage environment-friendly behavior",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jerome9189/save-the-trees.git"
+  },
+  "author": "Jerome Paliakkara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jerome9189/save-the-trees/issues"
+  },
+  "homepage": "https://github.com/jerome9189/save-the-trees#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.3",
+    "jquery": "^3.3.1"
+  }
+}
